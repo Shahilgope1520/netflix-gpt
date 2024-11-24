@@ -13,7 +13,6 @@ const useGetNowPlayingMovies = () => {
         throw new Error(`Failed to fetch movies: ${response.statusText}`);
       }
       const data = await response.json();
-      console.log("Movies fetched:", data?.results);
       dispatch(setNowPlayingMovies(data?.results));
     } catch (error) {
       console.error("Error fetching now-playing movies:", error);

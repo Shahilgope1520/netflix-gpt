@@ -1,9 +1,5 @@
 import React from "react";
-type UserAuthFormProps = {
-  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  isSignIn: boolean;
-  setIsSignIn: React.Dispatch<React.SetStateAction<boolean>>;
-};
+import { UserAuthFormProps } from "../types/userTypes";
 
 const UserAuthForm: React.FC<UserAuthFormProps> = ({
   handleSubmit,

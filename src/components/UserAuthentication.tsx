@@ -12,24 +12,14 @@ const UserAuthentication = ({ isSignInProp = true }) => {
   const [isSignIn, setIsSignIn] = useState(isSignInProp);
   const handleSignIn = async (email: string, password: string) => {
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      console.log("Signed in successfully:", userCredential.user);
+      await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
       console.error("Error signing in:", error);
     }
   };
   const handleSignUp = async (email: string, password: string) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      console.log("Signed up successfully:", userCredential.user);
+      await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
       console.error("Error signing up:", error);
     }

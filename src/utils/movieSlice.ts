@@ -1,15 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface Movie {
-  [key: string]: unknown; // To handle dynamic properties
-}
-
-interface MoviesState {
-  nowPlayingMovies: Movie[] | null;
-}
+import { Movie, MoviesState, MovieVideo } from "../types/movieTypes";
 
 const initialState: MoviesState = {
-  nowPlayingMovies: null,
+  nowPlayingMovies: [],
+  movieTrailor: null,
 };
 
 export const moviesSlice = createSlice({
@@ -17,11 +11,14 @@ export const moviesSlice = createSlice({
   initialState,
   reducers: {
     setNowPlayingMovies: (state, action: PayloadAction<Movie[]>) => {
-      state.nowPlayingMovies = action.payload;
+      state.nowPlayingMovies = action?.payload || [];
+    },
+    setMovieTrailor: (state, action: PayloadAction<MovieVideo>) => {
+      state.movieTrailor = action?.payload;
     },
   },
 });
 
-export const { setNowPlayingMovies } = moviesSlice.actions;
+export const { setNowPlayingMovies, setMovieTrailor } = moviesSlice.actions;
 
 export default moviesSlice.reducer;

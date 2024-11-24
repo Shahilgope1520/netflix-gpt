@@ -1,11 +1,10 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../utils/store";
 import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
 import NetflixLogo from "../assets/images/Netflix_Logo_PMS.png";
+import { useTypedSelector } from "../hooks/useReduxTypedHooks";
 
 const Header = () => {
-  const user = useSelector((state: RootState) => state.user);
+  const user = useTypedSelector((state) => state.user);
   const handleSignOut = async () => {
     try {
       await signOut(auth); // Sign out the user
